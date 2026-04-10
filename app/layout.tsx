@@ -3,23 +3,13 @@
 // ============================================================
 
 import type { Metadata, Viewport } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import { Sidebar } from "@/components/layout/Sidebar";
 import { BottomNav } from "@/components/layout/BottomNav";
 import { Header } from "@/components/layout/Header";
 import { ToastProvider } from "@/components/ui/toast";
 import { FocusMode } from "@/components/FocusMode";
-
-const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
-});
-
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
-});
+import { PWARegister } from "@/components/PWARegister";
 
 export const metadata: Metadata = {
   title: "Forge — Speak. Scan. Forge Your Day.",
@@ -32,7 +22,7 @@ export const metadata: Metadata = {
     title: "Forge",
   },
   icons: {
-    apple: "/icons/icon-192.png",
+    apple: "/favicon.ico",
   },
 };
 
@@ -51,10 +41,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className="dark">
-      <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased min-h-screen bg-slate-950 text-white`}
-      >
+      <body className="antialiased min-h-screen bg-slate-950 text-white">
         <ToastProvider>
+          <PWARegister />
           {/* Desktop Sidebar */}
           <Sidebar />
 

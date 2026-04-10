@@ -4,9 +4,9 @@
 
 "use client";
 
-import React, { useState, useRef, useCallback } from "react";
+import React, { useState, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { ChevronLeft, ChevronRight, Plus, Trash2, Edit3, GripVertical } from "lucide-react";
+import { ChevronLeft, ChevronRight, Trash2, Edit3 } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
 import {
@@ -14,7 +14,6 @@ import {
   DayOfWeek,
   DAYS_OF_WEEK,
   DAY_ABBREVIATIONS,
-  CATEGORY_COLORS,
   CATEGORY_COLORS_HEX,
   EventCategory,
 } from "@/types";

@@ -6,7 +6,7 @@
 
 import React, { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Mic, Upload, PenLine, ChevronDown } from "lucide-react";
+import { Mic, Upload, PenLine } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/card";
 import { VoiceInput } from "@/components/inputs/VoiceInput";
@@ -60,7 +60,7 @@ export default function InputsPage() {
 
       {/* Method selector cards */}
       <div className="grid grid-cols-3 gap-3">
-        {INPUT_METHODS.map(({ id, icon: Icon, title, description, color, bgColor, borderColor, badge }) => (
+        {INPUT_METHODS.map(({ id, title, color, bgColor, borderColor, badge }) => (
           <button
             key={id}
             onClick={() => setActiveMethod(id)}

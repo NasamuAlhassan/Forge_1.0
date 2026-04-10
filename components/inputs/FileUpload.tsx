@@ -15,9 +15,7 @@ import {
   CheckCircle,
   Loader2,
   X,
-  Eye,
 } from "lucide-react";
-import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 import { useForgeStore } from "@/lib/store";
 import { simulateDocumentExtraction } from "@/lib/scheduler";

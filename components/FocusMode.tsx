@@ -6,11 +6,11 @@
 
 import React, { useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Focus, X, Brain, Wifi, WifiOff } from "lucide-react";
+import { X, Brain, WifiOff } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { useForgeStore } from "@/lib/store";
 import { formatTime12h } from "@/lib/utils";
-import { getEventsForDay, sortEventsByTime } from "@/lib/utils";
+import { getEventsForDay } from "@/lib/utils";
 
 export function FocusMode() {
   const { focusModeActive, setFocusMode, getActiveEvents, currentDay } = useForgeStore();

@@ -2,7 +2,7 @@
 // Forge App - Sample Data for first-load experience
 // ============================================================
 
-import { TimetableEvent, PriorityItem, UserPreferences, DayOfWeek } from "@/types";
+import { TimetableEvent, PriorityItem, UserPreferences } from "@/types";
 import { generateId } from "./utils";
 
 /** Default user preferences */

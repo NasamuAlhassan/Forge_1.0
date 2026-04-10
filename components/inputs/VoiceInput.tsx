@@ -13,11 +13,38 @@ import { useForgeStore } from "@/lib/store";
 import { parseVoiceTranscript } from "@/lib/scheduler";
 import { useToast } from "@/components/ui/toast";
 
-// Extend the Window interface for SpeechRecognition
+interface SpeechRecognitionLike {
+  continuous: boolean;
+  interimResults: boolean;
+  lang: string;
+  onstart: (() => void) | null;
+  onresult: ((event: SpeechRecognitionEvent) => void) | null;
+  onerror: ((event: SpeechRecognitionErrorEvent) => void) | null;
+  onend: (() => void) | null;
+  start: () => void;
+  stop: () => void;
+}
+
+type SpeechRecognitionConstructor = new () => SpeechRecognitionLike;
+
+interface SpeechRecognitionEvent {
+  resultIndex: number;
+  results: {
+    isFinal: boolean;
+    0: { transcript: string };
+    length: number;
+  }[];
+}
+
+interface SpeechRecognitionErrorEvent {
+  error: string;
+}
+
+// Extend window for SpeechRecognition API
 declare global {
   interface Window {
-    SpeechRecognition: typeof SpeechRecognition;
-    webkitSpeechRecognition: typeof SpeechRecognition;
+    SpeechRecognition?: SpeechRecognitionConstructor;
+    webkitSpeechRecognition?: SpeechRecognitionConstructor;
   }
 }
 
@@ -28,7 +55,7 @@ export function VoiceInput() {
   const [transcript, setTranscript] = useState("");
   const [liveText, setLiveText] = useState("");
   const [isSupported, setIsSupported] = useState(true);
-  const recognitionRef = useRef<SpeechRecognition | null>(null);
+  const recognitionRef = useRef<SpeechRecognitionLike | null>(null);
   const { addEvents, addNotification } = useForgeStore();
   const { toast } = useToast();
 
